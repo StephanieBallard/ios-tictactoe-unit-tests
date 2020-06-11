@@ -18,6 +18,13 @@ class GameViewController: UIViewController, BoardViewControllerDelegate {
     
     // MARK: - Properties
     
+    private var game = Game() {
+        didSet {
+            updateViews()
+            boardViewController.board = game.board
+        }
+    }
+    
     private var boardViewController: BoardViewController! {
         willSet {
             boardViewController?.delegate = nil
@@ -43,8 +50,8 @@ class GameViewController: UIViewController, BoardViewControllerDelegate {
     }
     
     @IBAction func restartGame(_ sender: Any) {
-        board = GameBoard()
-        gameState = .active(.x)
+        game.restart()
+        
     }
     
     // MARK: - BoardViewControllerDelegate

@@ -10,12 +10,16 @@ import Foundation
 
 struct Game {
     
-    private(set) var board: GameBoard
-    internal var activePlayer: GameBoard.Mark?
-    internal var gameIsOver: Bool
-    internal var winningPlayer: GameBoard.Mark?
+    private(set) var board = GameBoard()
+    internal var activePlayer = GameBoard.Mark.x
+    internal var gameIsOver: Bool = false
+    internal var winningPlayer: GameBoard.Mark? = nil
     
     mutating internal func restart() {
+        board = GameBoard()
+        activePlayer = .x
+        gameIsOver = false
+        winningPlayer = nil
         
     }
     
